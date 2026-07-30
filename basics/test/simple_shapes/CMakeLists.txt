@@ -1,0 +1,3 @@
+add_executable(simple_shapes_tests main_test.cpp)
+target_link_libraries(simple_shapes_tests PRIVATE simple_shapes_core GTest::gtest GTest::gtest_main)
+gtest_discover_tests(simple_shapes_tests DISCOVERY_TIMEOUT 30)
