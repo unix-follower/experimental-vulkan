@@ -27,6 +27,9 @@ jobs:
           clang-format --version
           git ls-files '*.cpp' '*.hpp' '*.cc' '*.cxx' '*.vert' '*.frag' | xargs clang-format --dry-run --Werror
 
+      - name: Validate GLSL shaders
+        run: git ls-files '*.vert' '*.frag' | xargs -I{} glslangValidator -V {}
+
       - name: Install Ubuntu build dependencies
         run: |
           sudo apt-get update
@@ -71,7 +74,8 @@ jobs:
       - name: Check C++ static analysis
         shell: bash
         run: |
-          git ls-files '*.cpp' '*.hpp' '*.cc' '*.cxx' '*.vert' '*.frag' | xargs clang-tidy -p build
+          clang-tidy --version
+          git ls-files '*.cpp' '*.hpp' '*.cc' '*.cxx' | xargs clang-tidy -p build
 
       - name: Run CMake consuming CMakePreset.json and run vcpkg to build packages
         # https://github.com/marketplace/actions/run-cmake
