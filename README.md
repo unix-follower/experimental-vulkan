@@ -2,5 +2,5 @@
 
 ## Format code
 ```bash
-find . -name "*.cpp" -o -name "*.hpp" -o -name "*.cc" -o -name "*.cxx" | xargs clang-format -i
+git ls-files '*.cpp' '*.hpp' '*.cc' '*.cxx' '*.vert' '*.frag' | xargs clang-format -i
 ```
