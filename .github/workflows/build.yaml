@@ -25,7 +25,7 @@ jobs:
       - name: Check C++ formatting
         run: |
           clang-format --version
-          find . -name "*.cpp" -o -name "*.hpp" -o -name "*.cc" -o -name "*.cxx" -o -name "*.vert" -o -name "*.frag" | xargs clang-format --dry-run --Werror
+          git ls-files '*.cpp' '*.hpp' '*.cc' '*.cxx' '*.vert' '*.frag' | xargs clang-format --dry-run --Werror
 
       - name: Install Ubuntu build dependencies
         run: |
@@ -71,7 +71,7 @@ jobs:
       - name: Check C++ static analysis
         shell: bash
         run: |
-          find . -name "*.cpp" -o -name "*.hpp" -o -name "*.cc" -o -name "*.cxx" -o -name "*.vert" -o -name "*.frag" | xargs -0 clang-tidy -p build
+          git ls-files '*.cpp' '*.hpp' '*.cc' '*.cxx' '*.vert' '*.frag' | xargs clang-tidy -p build
 
       - name: Run CMake consuming CMakePreset.json and run vcpkg to build packages
         # https://github.com/marketplace/actions/run-cmake
