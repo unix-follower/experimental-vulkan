@@ -28,7 +28,11 @@ jobs:
           git ls-files '*.cpp' '*.hpp' '*.cc' '*.cxx' '*.vert' '*.frag' | xargs clang-format --dry-run --Werror
 
       - name: Validate GLSL shaders
-        run: git ls-files '*.vert' '*.frag' | xargs -I{} glslangValidator -V {}
+        run: |
+          sudo apt-get install -y glslc glslang-tools
+          glslc --version
+          glslangValidator --version
+          git ls-files '*.vert' '*.frag' | xargs -I{} glslangValidator -V {}
 
       - name: Install Ubuntu build dependencies
         run: |
@@ -37,7 +41,6 @@ jobs:
             clang-tidy \
             build-essential \
             pkg-config \
-            glslc \
             libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxkbcommon-dev \
             libwayland-dev libudev-dev libgl1-mesa-dev
 
