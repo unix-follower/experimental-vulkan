@@ -6,6 +6,10 @@ add_vulkan_app(simple_shapes
         lve_window.hpp
         lve_pipeline.cpp
         lve_pipeline.hpp
+        lve_device.cpp
+        lve_device.hpp
+        lve_swap_chain.cpp
+        lve_swap_chain.hpp
 )
 
 compile_shaders(simple_shapes
