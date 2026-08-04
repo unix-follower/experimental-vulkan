@@ -6,6 +6,7 @@ function(add_vulkan_app APP_NAME)
     target_link_libraries(${APP_NAME}_core PUBLIC Vulkan::Vulkan glfw ${ARG_LIBS})
     target_include_directories(${APP_NAME}_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
     target_compile_features(${APP_NAME}_core PUBLIC cxx_std_23)
+    target_link_libraries(${APP_NAME}_core PRIVATE glm::glm)
 
     add_executable(${APP_NAME} main.cpp)
     target_link_libraries(${APP_NAME} PRIVATE ${APP_NAME}_core)
