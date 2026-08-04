@@ -353,8 +353,11 @@ void LveSwapChain::createSyncObjects()
     fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
 
     for (size_t i = 0; i < imageCount(); i++) {
-        if ( vkCreateSemaphore(device.device(), &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) != VK_SUCCESS  ){
-            throw std::runtime_error("failed to create renderFinishedSemaphores objects for a frame!");
+        if (vkCreateSemaphore(
+                device.device(), &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) !=
+            VK_SUCCESS) {
+            throw std::runtime_error(
+                "failed to create renderFinishedSemaphores objects for a frame!");
         }
     }
     for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
