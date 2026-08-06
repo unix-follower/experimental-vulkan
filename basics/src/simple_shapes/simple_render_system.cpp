@@ -62,8 +62,8 @@ void SimpleRenderSystem::createPipeline(VkRenderPass renderPass)
 }
 
 void SimpleRenderSystem::renderGameObjects(VkCommandBuffer commandBuffer,
-    std::vector<LveGameObject>& gameObjects,
-    const LveCamera& camera)
+                                           std::vector<LveGameObject>& gameObjects,
+                                           const LveCamera& camera)
 {
     lvePipeline->bind(commandBuffer);
 

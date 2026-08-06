@@ -7,15 +7,18 @@
 namespace simple_shapes {
 
 class LveCamera {
- public:
-  void setOrthographicProjection(
-      float left, float right, float top, float bottom, float near, float far);
+  public:
+    void setOrthographicProjection(
+        float left, float right, float top, float bottom, float near, float far);
 
-  void setPerspectiveProjection(float fovy, float aspect, float near, float far);
+    void setPerspectiveProjection(float fovy, float aspect, float near, float far);
 
-  const glm::mat4& getProjection() const { return projectionMatrix; }
+    const glm::mat4& getProjection() const
+    {
+        return projectionMatrix;
+    }
 
- private:
-  glm::mat4 projectionMatrix{1.f};
+  private:
+    glm::mat4 projectionMatrix{1.f};
 };
-}  // namespace simple_shapes
+} // namespace simple_shapes
