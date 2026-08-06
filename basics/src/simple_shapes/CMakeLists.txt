@@ -19,6 +19,8 @@ add_vulkan_app(simple_shapes
         simple_render_system.cpp
         lve_camera.hpp
         lve_camera.cpp
+        keyboard_movement_controller.hpp
+        keyboard_movement_controller.cpp
 )
 
 compile_shaders(simple_shapes
