@@ -17,6 +17,8 @@ add_vulkan_app(simple_shapes
         lve_renderer.cpp
         simple_render_system.hpp
         simple_render_system.cpp
+        lve_camera.hpp
+        lve_camera.cpp
 )
 
 compile_shaders(simple_shapes
