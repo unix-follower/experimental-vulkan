@@ -12,6 +12,7 @@ add_vulkan_app(simple_shapes
         lve_swap_chain.hpp
         lve_model.hpp
         lve_model.cpp
+        lve_game_object.hpp
 )
 
 compile_shaders(simple_shapes
