@@ -13,6 +13,10 @@ add_vulkan_app(simple_shapes
         lve_model.hpp
         lve_model.cpp
         lve_game_object.hpp
+        lve_renderer.hpp
+        lve_renderer.cpp
+        simple_render_system.hpp
+        simple_render_system.cpp
 )
 
 compile_shaders(simple_shapes
