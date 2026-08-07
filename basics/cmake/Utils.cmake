@@ -7,6 +7,7 @@ function(add_vulkan_app APP_NAME)
     target_include_directories(${APP_NAME}_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
     target_compile_features(${APP_NAME}_core PUBLIC cxx_std_23)
     target_link_libraries(${APP_NAME}_core PRIVATE glm::glm)
+    target_link_libraries(${APP_NAME}_core PRIVATE tinyobjloader::tinyobjloader)
 
     add_executable(${APP_NAME} main.cpp)
     target_link_libraries(${APP_NAME} PRIVATE ${APP_NAME}_core)
@@ -45,4 +46,31 @@ function(compile_shaders TARGET_NAME)
 
     add_custom_target(${TARGET_NAME}_shaders ALL DEPENDS ${shader_outputs})
     add_dependencies(${TARGET_NAME} ${TARGET_NAME}_shaders)
+endfunction()
+
+# copy_assets(<target> DIR <source_dir> [DEST <subdir_name>])
+#
+# Symlinks (or copies, as fallback) an asset directory into the target's
+# binary output directory so runtime-relative paths like "models/foo.obj"
+# resolve correctly when running the built executable.
+function(copy_assets TARGET_NAME)
+    cmake_parse_arguments(ARG "" "DIR;DEST" "" ${ARGN})
+
+    if(NOT ARG_DIR)
+        message(FATAL_ERROR "copy_assets(${TARGET_NAME}): DIR is required")
+    endif()
+
+    if(NOT ARG_DEST)
+        get_filename_component(ARG_DEST ${ARG_DIR} NAME)
+    endif()
+
+    set(dest_path ${CMAKE_CURRENT_BINARY_DIR}/${ARG_DEST})
+
+    add_custom_command(
+        TARGET ${TARGET_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E rm -rf ${dest_path}
+        COMMAND ${CMAKE_COMMAND} -E create_symlink ${ARG_DIR} ${dest_path}
+        COMMENT "Linking assets: ${ARG_DIR} -> ${dest_path}"
+        VERBATIM
+    )
 endfunction()

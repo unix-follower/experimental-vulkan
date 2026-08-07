@@ -21,6 +21,7 @@ add_vulkan_app(simple_shapes
         lve_camera.cpp
         keyboard_movement_controller.hpp
         keyboard_movement_controller.cpp
+        lve_utils.hpp
 )
 
 compile_shaders(simple_shapes
@@ -28,3 +29,5 @@ compile_shaders(simple_shapes
         ${CMAKE_CURRENT_SOURCE_DIR}/shaders/simple_shader.vert
         ${CMAKE_CURRENT_SOURCE_DIR}/shaders/simple_shader.frag
 )
+
+copy_assets(simple_shapes DIR ${CMAKE_CURRENT_SOURCE_DIR}/models)

@@ -12,6 +12,7 @@ include(Utils)
 find_package(Vulkan REQUIRED COMPONENTS glslc)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
+find_package(tinyobjloader CONFIG REQUIRED)
 
 option(BUILD_TESTS "Build unit tests" ON)
 enable_testing()
