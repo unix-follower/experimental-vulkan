@@ -23,6 +23,9 @@ add_vulkan_app(simple_shapes
         keyboard_movement_controller.cpp
         lve_utils.hpp
         lve_game_object.cpp
+        lve_buffer.cpp
+        lve_buffer.hpp
+        lve_frame_info.hpp
 )
 
 compile_shaders(simple_shapes
