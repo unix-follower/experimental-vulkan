@@ -6,9 +6,9 @@
 
 namespace simple_shapes {
 struct FrameInfo {
-  int frameIndex;
-  float frameTime;
-  VkCommandBuffer commandBuffer;
-  LveCamera &camera;
+    int frameIndex;
+    float frameTime;
+    VkCommandBuffer commandBuffer;
+    LveCamera& camera;
 };
-}  // namespace simple_shapes
+} // namespace simple_shapes
