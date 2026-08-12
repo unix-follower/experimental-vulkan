@@ -5,6 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <memory>
+#include <unordered_map>
 
 namespace simple_shapes {
 
@@ -24,6 +25,7 @@ struct TransformComponent {
 class LveGameObject {
   public:
     using id_t = unsigned int;
+    using Map = std::unordered_map<id_t, LveGameObject>;
 
     static LveGameObject createGameObject()
     {
