@@ -15,8 +15,6 @@ add_vulkan_app(simple_shapes
         lve_game_object.hpp
         lve_renderer.hpp
         lve_renderer.cpp
-        simple_render_system.hpp
-        simple_render_system.cpp
         lve_camera.hpp
         lve_camera.cpp
         keyboard_movement_controller.hpp
@@ -28,12 +26,18 @@ add_vulkan_app(simple_shapes
         lve_frame_info.hpp
         lve_descriptors.hpp
         lve_descriptors.cpp
+        systems/simple_render_system.hpp
+        systems/simple_render_system.cpp
+        systems/point_light_system.hpp
+        systems/point_light_system.cpp
 )
 
 compile_shaders(simple_shapes
     SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/shaders/simple_shader.vert
         ${CMAKE_CURRENT_SOURCE_DIR}/shaders/simple_shader.frag
+        ${CMAKE_CURRENT_SOURCE_DIR}/shaders/point_light.vert
+        ${CMAKE_CURRENT_SOURCE_DIR}/shaders/point_light.frag
 )
 
 copy_assets(simple_shapes DIR ${CMAKE_CURRENT_SOURCE_DIR}/models)
