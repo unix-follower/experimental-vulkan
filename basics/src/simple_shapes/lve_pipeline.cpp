@@ -73,8 +73,8 @@ void LvePipeline::createGraphicsPipeline(const std::string& vertFilepath,
     shaderStages[1].pNext = nullptr;
     shaderStages[1].pSpecializationInfo = nullptr;
 
-    auto bindingDescriptions = LveModel::Vertex::getBindingDescriptions();
-    auto attributeDescriptions = LveModel::Vertex::getAttributeDescriptions();
+    auto& bindingDescriptions = configInfo.bindingDescriptions;
+    auto& attributeDescriptions = configInfo.attributeDescriptions;
     VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
     vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
     vertexInputInfo.vertexAttributeDescriptionCount =
@@ -200,6 +200,9 @@ void LvePipeline::defaultPipelineConfigInfo(PipelineConfigInfo& configInfo)
     configInfo.dynamicStateInfo.dynamicStateCount =
         static_cast<uint32_t>(configInfo.dynamicStateEnables.size());
     configInfo.dynamicStateInfo.flags = 0;
+
+    configInfo.bindingDescriptions = LveModel::Vertex::getBindingDescriptions();
+    configInfo.attributeDescriptions = LveModel::Vertex::getAttributeDescriptions();
 }
 
 } // namespace simple_shapes
