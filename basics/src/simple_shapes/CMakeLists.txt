@@ -26,6 +26,8 @@ add_vulkan_app(simple_shapes
         lve_buffer.cpp
         lve_buffer.hpp
         lve_frame_info.hpp
+        lve_descriptors.hpp
+        lve_descriptors.cpp
 )
 
 compile_shaders(simple_shapes
