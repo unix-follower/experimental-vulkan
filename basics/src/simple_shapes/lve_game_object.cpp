@@ -31,7 +31,7 @@ glm::mat4 TransformComponent::mat4()
                      {translation.x, translation.y, translation.z, 1.0f}};
 }
 
-glm::mat3 TransformComponent::normalMatrix()
+glm::mat3 TransformComponent::normalMatrix() const
 {
     const float c3 = glm::cos(rotation.z);
     const float s3 = glm::sin(rotation.z);
@@ -60,4 +60,13 @@ glm::mat3 TransformComponent::normalMatrix()
     };
 }
 
+LveGameObject LveGameObject::makePointLight(float intensity, float radius, glm::vec3 color)
+{
+    LveGameObject gameObj = LveGameObject::createGameObject();
+    gameObj.color = color;
+    gameObj.transform.scale.x = radius;
+    gameObj.pointLight = std::make_unique<PointLightComponent>();
+    gameObj.pointLight->lightIntensity = intensity;
+    return gameObj;
+}
 } // namespace simple_shapes
