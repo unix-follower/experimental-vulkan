@@ -8,6 +8,7 @@
 namespace simple_shapes {
 
 struct PipelineConfigInfo {
+    PipelineConfigInfo() = default;
     PipelineConfigInfo& operator=(const PipelineConfigInfo&) = delete;
 
     std::vector<VkVertexInputBindingDescription> bindingDescriptions{};
@@ -40,6 +41,7 @@ class LvePipeline {
     void bind(VkCommandBuffer commandBuffer);
 
     static void defaultPipelineConfigInfo(PipelineConfigInfo& configInfo);
+    static void enableAlphaBlending(PipelineConfigInfo& configInfo);
 
   private:
     static std::vector<char> readFile(const std::string& filepath);
